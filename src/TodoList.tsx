@@ -1,20 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { TodoType } from "./App";
 import Todo from "./Todo";
 
 interface TodoListProps {
-	todos: TodoType[];
+  todos?: TodoType[];
+  toggleTodo(id: number): void;
 }
 
-const TodoList = ({ todos }: TodoListProps) => {
-	return (
-		<>
-			{todos.map((todo) => {
-				return <Todo todo={todo} />;
-			})}
-		</>
-	);
+const TodoList = ({ todos, toggleTodo }: TodoListProps) => {
+  return (
+    <>
+      {todos?.map((todo) => {
+        return <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} />;
+      })}
+    </>
+  );
 };
 
 export default TodoList;
